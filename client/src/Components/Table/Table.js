@@ -3,6 +3,9 @@ import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody, MDBContainer } 
 import './Table.css'
 import { Select } from 'antd';
 
+import { SwapOutlined } from '@ant-design/icons';
+
+
 function Table() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFrom, setSelectedFrom] = useState('');
@@ -11,25 +14,25 @@ function Table() {
 
   const data = [
     {
-      image: "https://www.pngitem.com/pimgs/m/20-205338_saudia-airlines-logo-vector-logo-saudi-arabian-airlines.png",
+      image: "https://seeklogo.com/images/S/Saudi_Arabian_Airlines-logo-E05C118216-seeklogo.com.png",
       name: 'John Doe',
       from: "Calicut",
       to: "Bengluru",
     },
     {
-      image: "https://www.pngitem.com/pimgs/m/20-205338_saudia-airlines-logo-vector-logo-saudi-arabian-airlines.png",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Emirates_logo.svg/566px-Emirates_logo.svg.png",
       name: 'Alex Ray',
       from: "Bengluru",
       to: "Abudhabi",
     },
     {
-      image: "https://www.pngitem.com/pimgs/m/20-205338_saudia-airlines-logo-vector-logo-saudi-arabian-airlines.png",
+      image: "https://logowik.com/content/uploads/images/541_qatarairways.jpg",
       name: 'Kate Hunington',
       from: "Sharjah",
       to: "Jeddah",
     },
     {
-      image: "https://www.pngitem.com/pimgs/m/20-205338_saudia-airlines-logo-vector-logo-saudi-arabian-airlines.png",
+      image: "https://w7.pngwing.com/pngs/544/56/png-transparent-gulf-air-office-airline-check-in-logo-umrah-miscellaneous-company-text-thumbnail.png",
       name: 'John Doe',
       from: "Abudhabi",
       to: "Calicut",
@@ -72,17 +75,17 @@ function Table() {
     (selectedTo === '' || item.to === selectedTo)
   );
 
-  return (
-    <div>
+  return(
+    <>
       <MDBContainer>
         <div className="filter">
           <div className="from">
             From <Select
               showSearch
               style={{
-                width: 200,
+                width: 400,
               }}
-              placeholder="Search to Select"
+              placeholder="Choose Depature Point"
               value={selectedFrom}
               onChange={(value) => setSelectedFrom(value)}
               optionFilterProp="children"
@@ -119,14 +122,22 @@ function Table() {
               ]}
             />
           </div>
+
+          <div className="icon">
+          <SwapOutlined/>
+          </div>
           <div className="to">
             TO
             <Select
+            
               showSearch
               style={{
-                width: 200,
+                width: 400,
+              
+                fontSize:20
               }}
-              placeholder="Search to Select"
+              className="to-selection"
+              placeholder="Choose Designation point"
               value={selectedTo}
               onChange={(value) => setSelectedTo(value)}
               optionFilterProp="children"
@@ -167,13 +178,12 @@ function Table() {
         </div>
 
         {
-
-          filteredData.length === 0 ? (
-            <p>No Airlines Available</p>
-          ) : (<MDBTable align='middle'>
+          filteredData.length === 0?(
+            <p  className='no-data'>No Airlines Available</p>
+          ) : (<MDBTable align='middle' className='data-table'>
             <MDBTableHead>
               <tr>
-                <th scope='col'>Name</th>
+                <th scope='col'>Airline Name</th>
                 <th scope='col'>Date</th>
                 <th scope='col'>From </th>
                 <th scope='col'>To</th>
@@ -183,15 +193,13 @@ function Table() {
             <MDBTableBody>
               {filteredData.map((item, index) => (
                 <tr key={index}>
-                  <td>
-                    <div className='d-flex align-items-center'>
+                  <td className="airline-name">
+                    <div className='d-flex align-items-center '>
                       <img
                         src={item.image}
                         alt=''
-                        style={{ width: '45px', height: '45px' }}
-                        className='rounded-circle'
                       />
-                      <div className='ms-3'>
+                      <div className='ms-5'>
                         <p className='fw-bold mb-1'>{item.name}</p>
 
                       </div>
@@ -213,7 +221,7 @@ function Table() {
         }
 
       </MDBContainer>
-    </div>
+    </>
   );
 }
 export default Table

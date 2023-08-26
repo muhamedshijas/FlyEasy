@@ -6,7 +6,8 @@ function Banner() {
     <div>
     <div className="banner">
     <div className="quotes">
-    <h3>Seamless Booking, Endless Discoveries.</h3>
+    <h3>Seamless Booking, </h3>
+    <h3>Endless Discoveries.</h3>
     <p>Book your Tickets Here...</p>
     <button>Try It Out</button>
     </div>

@@ -21,6 +21,7 @@ body{
 }
 .banner .quotes h3{
     color: #102C57;
+    text-align: left;
 }
 .banner .quotes p{
     font-size: 20px;
