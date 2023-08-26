@@ -1,7 +1,15 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .banner{
-    width:100vw;
+    width:95vw;
     display: flex;
     background-color: #EADBC8;
+    margin-top: 90px;
+    border-radius: 9px;
 }
 .banner .quotes{
     width: 50%;
