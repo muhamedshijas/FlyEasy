@@ -1,16 +1,17 @@
 import React from 'react';
 import { MDBBtn, MDBContainer } from 'mdb-react-ui-kit';
 import './App.css'
-import Navbar from './Components/Navbar/Navbar';
-import Banner from './Components/Banner/Banner';
-import Table from './Components/Table/Table';
+import Home from './Components/Home/Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <MDBContainer fluid>
-      <Navbar/>
-      <Banner/>
-      <Table/>
+    <Routes>
+    <Route path='/' element={<Home/>}/>
+
+ 
+    </Routes>
     </MDBContainer>
   );
 }
