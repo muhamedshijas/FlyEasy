@@ -87,6 +87,7 @@ body {
 }
 .airline-name img{
   height: 60px;
+  border-radius: 45px;
   width: 60px;
   
 }

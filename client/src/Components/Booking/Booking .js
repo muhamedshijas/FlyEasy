@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './BookingPage.css'
 import { Select } from 'antd';
 
@@ -22,10 +22,19 @@ import {
     MDBDropdownItem,
 } from 'mdb-react-ui-kit';
 
-
 import { SwapOutlined } from '@ant-design/icons';
 
 function Booking() {
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Select Payment Method');
+    const [showCardFields, setShowCardFields] = useState(false);
+    const [showUpiField, setShowUpiField] = useState(false);
+
+    const handlePaymentMethodSelect = (method) => {
+        setSelectedPaymentMethod(method);
+        setShowCardFields(method === 'Card');
+        setShowUpiField(method === 'UPI Method');
+    };
+
     return (
         <MDBContainer fluid>
             <div className="bookin-page">
@@ -68,12 +77,13 @@ function Booking() {
                     </div>
                 </div>
                 <div className="travel-documents">
-                <div className="passport-detials">
-                <MDBInput label="Passport No" />
-                <MDBInput label="Issued Country" />
-                <MDBInput label="Issued Date" type={"date"} />
-                </div>
-                    <MDBDropdown >
+                    <div className="passport-detials">
+                        <MDBInput label="Passport No" />
+                        <MDBInput label="Issued Country" />
+                        <MDBInput label="Issued Date" type={"date"} />
+                    </div>
+                    <MDBDropdown>
+
                         <MDBDropdownToggle caret>Type of visa</MDBDropdownToggle>
                         <MDBDropdownMenu>
                             <MDBDropdownItem >
@@ -87,7 +97,65 @@ function Booking() {
                             </MDBDropdownItem>
                             {/* Add more visa types as needed */}
                         </MDBDropdownMenu>
+
                     </MDBDropdown>
+                </div>
+                <div className="payment">
+                    <MDBDropdown>
+                        <MDBDropdownToggle caret>
+                            {selectedPaymentMethod}
+                        </MDBDropdownToggle>
+                        <MDBDropdownMenu>
+                            <MDBDropdownItem onClick={() => handlePaymentMethodSelect('Card')}>
+                                Card
+                            </MDBDropdownItem>
+                            <MDBDropdownItem onClick={() => handlePaymentMethodSelect('UPI Method')}>
+                                UPI Method
+                            </MDBDropdownItem>
+                            <MDBDropdownItem onClick={() => handlePaymentMethodSelect('Direct cash')}>
+                                Direct cash
+                            </MDBDropdownItem>
+                        </MDBDropdownMenu>
+                    </MDBDropdown>
+
+                    {showCardFields && (
+                        <div className="card-detials">
+                            <MDBInput label="Card No" />
+                            <MDBInput label="Expiry Date" />
+                            <MDBInput label="CVV" />
+                        </div>
+                    )}
+
+                    {showUpiField && (
+                        <div className='upi-id'>
+                            <MDBInput label="UPI Id" />
+                        </div>
+                    )}
+                </div>
+                <div className="billing-address">
+                <div className="passenger">
+                <MDBInput label="Name" />
+                <MDBInput label="Address" />
+                </div>
+                <div className="passenger">
+                <MDBInput label="City" />
+                <MDBInput label="State" />
+                </div>
+                <div className="passenger">
+                <MDBInput label="Country" />
+                <MDBInput label="Zip" />
+                </div>
+                <div className="passenger">
+                <MDBInput label="Phone No" />
+                <MDBInput label="Email" />
+                </div>
+
+                <div className="passenger">
+                <MDBInput label="Payment Method" value={selectedPaymentMethod}  disabled/>
+                </div>
+                </div>
+                <div className="submit-button">
+                <button>Submit </button>
                 </div>
             </div>
         </MDBContainer>

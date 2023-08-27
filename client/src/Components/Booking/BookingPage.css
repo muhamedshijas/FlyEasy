@@ -66,7 +66,7 @@
     gap: 20px;  
 }
 .bookin-page .user-detials::after {
-    content: "User Detials"; 
+    content: "Passenger Detials"; 
     background-color: #F8F0E5; 
     padding: 0 10px; 
     position: absolute;
@@ -109,7 +109,7 @@
     left: 21%; 
     transform: translateX(-50%);
 }
-.bookin-page .travel-documents .dropdown .ripple{
+.bookin-page .dropdown .ripple{
     background-color: #F8F0E5;
     width: 250px;
     display: flex;
@@ -125,4 +125,80 @@
     display: flex;
     gap: 20px;
     height: 40px;
+}
+.bookin-page .payment{
+    margin-top: 15px;
+    border: 2px solid #102c5729;
+    border-radius: 9px;
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    position: relative; 
+    flex-direction: column;
+    gap: 20px;  
+}
+.bookin-page .payment::after {
+    content: "Payment Methods"; 
+    background-color: #F8F0E5; 
+    padding: 0 10px; 
+    position: absolute;
+    top: -16px;
+    font-size: 19px;
+    font-weight: 600;
+    left: 10%; 
+    transform: translateX(-50%);
+}
+
+.bookin-page .payment .card-detials{
+    display:  flex;
+    gap: 20px;
+}
+.bookin-page  .card-detials input{
+    height: 40px;
+}
+.bookin-page .dropdown{
+    cursor: pointer;
+}
+.upi-id{
+    width: 50%;
+}
+.bookin-page .billing-address{
+    margin-top: 15px;
+    border: 2px solid #102c5729;
+    border-radius: 9px;
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    position: relative; 
+    flex-direction: column;
+    gap: 20px;
+}
+.bookin-page .billing-address::after {
+    content: "Billing Address"; 
+    background-color: #F8F0E5; 
+    padding: 0 10px; 
+    position: absolute;
+    top: -16px;
+    font-size: 19px;
+    font-weight: 600;
+    left: 10%; 
+    transform: translateX(-50%);
+}
+.bookin-page .billing-address .passenger{
+    display: flex;
+    gap: 20px;
+}
+.bookin-page .submit-button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.bookin-page .submit-button button{
+    background-color: #102c57;
+    color: white;
+    height: 50px;
+    width: 220px;
+    border-radius: 5px;
 }
