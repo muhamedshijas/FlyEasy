@@ -1,0 +1,128 @@
+.bookin-page{
+    justify-content:  center;
+    align-items: center;
+    width: 60vw;
+    background-color:#F8F0E5;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bookin-page .travel-detials{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bookin-page .travel-detials p{
+    font-weight: 700;
+    font-size: 29px;
+    margin-bottom: 2px !important;
+}
+.bookin-page .travel-detials .destination{
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    gap: 10px;
+    
+}
+.bookin-page .preferences{
+    margin-top: 15px;
+    border: 2px solid #102c5729;
+    border-radius: 9px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    position: relative;
+}
+.bookin-page .preferences::after {
+    content: "Preference"; 
+    background-color: #F8F0E5; 
+    padding: 0 10px; 
+    position: absolute;
+    top: -16px;
+    font-size: 19px;
+    font-weight: 600;
+    left: 10%; 
+    transform: translateX(-50%);
+}
+.bookin-page .preferences .item-one label{
+    gap: 10px;
+    display: flex;
+
+}
+.bookin-page .user-detials{
+    margin-top: 15px;
+    border: 2px solid #102c5729;
+    border-radius: 9px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    width: 100%;
+    position: relative; 
+    flex-direction: column;
+    gap: 20px;  
+}
+.bookin-page .user-detials::after {
+    content: "User Detials"; 
+    background-color: #F8F0E5; 
+    padding: 0 10px; 
+    position: absolute;
+    top: -16px;
+    font-size: 19px;
+    font-weight: 600;
+    left: 10%; 
+    transform: translateX(-50%);
+}
+.bookin-page .user-detials .section-1{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.bookin-page .user-detials .form-outline{
+    width: 320px !important;
+    height: 40px;
+}
+.bookin-page .travel-documents{
+    margin-top: 15px;
+    border: 2px solid #102c5729;
+    border-radius: 9px;
+    display: flex;
+    padding: 20px;
+ 
+    width: 100%;
+    position: relative; 
+    flex-direction: column;
+    gap: 20px;  
+}
+.bookin-page .travel-documents::after {
+    content: "Travel Documents (if applicaple)"; 
+    background-color: #F8F0E5; 
+    padding: 0 10px; 
+    position: absolute;
+    top: -16px;
+    font-size: 19px;
+    font-weight: 600;
+    left: 21%; 
+    transform: translateX(-50%);
+}
+.bookin-page .travel-documents .dropdown .ripple{
+    background-color: #F8F0E5;
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+    height: 40px;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.122);
+    box-shadow: none !important;
+}
+.bookin-page .travel-documents .passport-detials{
+    display: flex;
+    gap: 20px;
+    height: 40px;
+}

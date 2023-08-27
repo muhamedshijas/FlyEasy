@@ -4,6 +4,7 @@ import './Table.css'
 import { Select } from 'antd';
 
 import { SwapOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 
 function Table() {
@@ -211,7 +212,11 @@ function Table() {
                   </td>
                   <td>{item.from}</td>
                   <td>{item.to}</td>
-                  <td><button>Book Now</button></td>
+                  <td>
+                  <Link to='/booking'>
+                  <button>Book Now</button>
+                  </Link>
+                  </td>
                 </tr>
               ))}
             </MDBTableBody>
