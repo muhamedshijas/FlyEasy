@@ -23,11 +23,35 @@ import {
 } from 'mdb-react-ui-kit';
 
 import { SwapOutlined } from '@ant-design/icons';
+import ReiviewBooking from '../../Modal/ReiviewBooking';
 
 function Booking() {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Select Payment Method');
     const [showCardFields, setShowCardFields] = useState(false);
     const [showUpiField, setShowUpiField] = useState(false);
+    const [showModal,setShowModal]=useState(false)
+    const [name,SetName]=useState("name")
+    const [number,SetNumber]=useState()
+    const [email,setEmail]=useState("")
+    const[idNo,setIdNo]=useState()
+    const[date,setDate]=useState()
+    const[passportNO,setPassportNo]=useState()
+    const [issuedCountry,setIssuedCountry]=useState("")
+    const[issuedDate,setIssuedDate]=useState("")
+    const[visaType,setVisaType]=useState("Select Type of Visa")
+    const[isWindow,setIsWindow]=useState(false)
+    const[isMeals,setIsMeals]=useState(false)
+    const[isSpecial,setIsSpecial]=useState(false)
+    const[cardNo,setCardNo]=useState()
+    const[cardDate,setCardDate]=useState()
+    const[cvv,setCvv]=useState()
+    const[upi,setUpi]=useState()
+    address,city,state,coountry,zip
+    const [address,setAddress]=useState("")
+    const [city,setCity]=useState("")
+    const [state,setState]=useState("")
+    const [country,setCountry]=useState("")
+    const [zip,setZip]=useState()
 
     const handlePaymentMethodSelect = (method) => {
         setSelectedPaymentMethod(method);
@@ -35,6 +59,12 @@ function Booking() {
         setShowUpiField(method === 'UPI Method');
     };
 
+    const handleVisa=(type)=>{
+        setVisaType(type)
+    }
+    function handleBooking(){   
+        setShowModal(true)
+    }
     return (
         <MDBContainer fluid>
             <div className="bookin-page">
@@ -83,21 +113,20 @@ function Booking() {
                         <MDBInput label="Issued Date" type={"date"} />
                     </div>
                     <MDBDropdown>
-
-                        <MDBDropdownToggle caret>Type of visa</MDBDropdownToggle>
+                        <MDBDropdownToggle caret>
+                            {visaType}
+                        </MDBDropdownToggle>
                         <MDBDropdownMenu>
-                            <MDBDropdownItem >
-                                Visiting Visa
-                            </MDBDropdownItem>
-                            <MDBDropdownItem >
+                            <MDBDropdownItem onClick={() => handleVisa('Job Visa')}>
                                 Job Visa
                             </MDBDropdownItem>
-                            <MDBDropdownItem>
+                            <MDBDropdownItem onClick={() => handleVisa('Educational Visa')}>
                                 Educational Visa
                             </MDBDropdownItem>
-                            {/* Add more visa types as needed */}
+                            <MDBDropdownItem onClick={() => handleVisa('Visiting Visa')}>
+                                Visiting Visa
+                            </MDBDropdownItem>
                         </MDBDropdownMenu>
-
                     </MDBDropdown>
                 </div>
                 <div className="payment">
@@ -155,10 +184,12 @@ function Booking() {
                 </div>
                 </div>
                 <div className="submit-button">
-                <button>Submit </button>
+                <button onClick={handleBooking }>Review Booking </button>
                 </div>
-            </div>
+                </div>
+                {showModal&&<ReiviewBooking setShowModal={setShowModal}/>}
         </MDBContainer>
+
     )
 }
 

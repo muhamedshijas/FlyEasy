@@ -188,6 +188,9 @@
     display: flex;
     gap: 20px;
 }
+.bookin-page .billing-address input{
+    height: 50px;
+}
 .bookin-page .submit-button{
     width: 100%;
     display: flex;
@@ -200,5 +203,6 @@
     color: white;
     height: 50px;
     width: 220px;
+    font-weight: 600;
     border-radius: 5px;
 }
