@@ -30,8 +30,8 @@ function Booking() {
     const [showCardFields, setShowCardFields] = useState(false);
     const [showUpiField, setShowUpiField] = useState(false);
     const [showModal,setShowModal]=useState(false)
-    const [name,SetName]=useState("name")
-    const [number,SetNumber]=useState()
+    const [name,setName]=useState("name")
+    const [number,SetNumber]=useState(0)
     const [email,setEmail]=useState("")
     const[idNo,setIdNo]=useState()
     const[date,setDate]=useState()
@@ -46,12 +46,12 @@ function Booking() {
     const[cardDate,setCardDate]=useState()
     const[cvv,setCvv]=useState()
     const[upi,setUpi]=useState()
-    address,city,state,coountry,zip
     const [address,setAddress]=useState("")
     const [city,setCity]=useState("")
     const [state,setState]=useState("")
     const [country,setCountry]=useState("")
     const [zip,setZip]=useState()
+   
 
     const handlePaymentMethodSelect = (method) => {
         setSelectedPaymentMethod(method);
@@ -62,9 +62,11 @@ function Booking() {
     const handleVisa=(type)=>{
         setVisaType(type)
     }
-    function handleBooking(){   
+    const handleBooking=()=>{
+        console.log(isWindow)
         setShowModal(true)
     }
+
     return (
         <MDBContainer fluid>
             <div className="bookin-page">
@@ -79,38 +81,38 @@ function Booking() {
                 <div className="preferences">
                     <div className="item-one">
                         <label>
-                            <MDBCheckbox />
+                            <MDBCheckbox checked={isWindow} onChange={(e)=>{setIsWindow(e.target.checked)}}/>
                             Window Seat
                         </label>
                     </div>
                     <div className="item-one">
                         <label>
-                            <MDBCheckbox />
+                            <MDBCheckbox checked={isMeals} onChange={(e)=>{setIsMeals(e.target.checked)}} />
                             Inflight-meals
                         </label>
                     </div>
                     <div className="item-one">
                         <label>
-                            <MDBCheckbox />
+                            <MDBCheckbox checked={isSpecial} onChange={(e)=>{setIsSpecial(e.target.checked)}} />
                             Special assistance or accommodations
                         </label>
                     </div>
                 </div>
                 <div className="user-detials">
                     <div className="section-1">
-                        <MDBInput label="name" />
-                        <MDBInput label="Phone No" />
+                        <MDBInput label="name"   onChange={(e)=>setName(e.target.value)}/>
+                        <MDBInput label="Phone No"  onChange={(e)=>SetNumber(e.target.value)}/>
                     </div>
                     <div className="section-1">
-                        <MDBInput label="Identity Card Number" />
-                        <MDBInput label="Date" type={"date"} />
+                        <MDBInput label="Identity Card Number" onChange={(e)=>setIdNo(e.target.value)} />
+                        <MDBInput label="Date" type={"date"} onChange={(e)=>setDate(e.target.value)} />
                     </div>
                 </div>
                 <div className="travel-documents">
                     <div className="passport-detials">
-                        <MDBInput label="Passport No" />
-                        <MDBInput label="Issued Country" />
-                        <MDBInput label="Issued Date" type={"date"} />
+                        <MDBInput label="Passport No"  onChange={(e)=>setPassportNo(e.target.value)}/>
+                        <MDBInput label="Issued Country" onChange={(e)=>setIssuedCountry(e.target.value)}/>
+                        <MDBInput label="Issued Date" type={"date"}  onChange={(e)=>setIssuedDate(e.target.value)}/>
                     </div>
                     <MDBDropdown>
                         <MDBDropdownToggle caret>
@@ -149,9 +151,9 @@ function Booking() {
 
                     {showCardFields && (
                         <div className="card-detials">
-                            <MDBInput label="Card No" />
-                            <MDBInput label="Expiry Date" />
-                            <MDBInput label="CVV" />
+                            <MDBInput label="Card No" onChange={(e)=>setCardNo(e.target.value)} />
+                            <MDBInput label="Expiry Date" onChange={(e)=>setCardDate(e.target.value)} />
+                            <MDBInput label="CVV" onChange={(e)=>setCvv(e.target.value)} />
                         </div>
                     )}
 
@@ -163,19 +165,19 @@ function Booking() {
                 </div>
                 <div className="billing-address">
                 <div className="passenger">
-                <MDBInput label="Name" />
-                <MDBInput label="Address" />
+                <MDBInput label="Name" value={name} disabled />
+                <MDBInput label="Address" onChange={(e)=>setAddress(e.target.value)} />
                 </div>
                 <div className="passenger">
-                <MDBInput label="City" />
-                <MDBInput label="State" />
+                <MDBInput label="City" onChange={(e)=>setCity(e.target.value)}/>
+                <MDBInput label="State" onChange={(e)=>setState(e.target.value)}/>
                 </div>
                 <div className="passenger">
-                <MDBInput label="Country" />
-                <MDBInput label="Zip" />
+                <MDBInput label="Country" onChange={(e)=>setCountry(e.target.value)} />
+                <MDBInput label="Zip" onChange={(e)=>setZip(e.target.value)}/>
                 </div>
                 <div className="passenger">
-                <MDBInput label="Phone No" />
+                <MDBInput label="Phone No" value={number} disabled/>
                 <MDBInput label="Email" />
                 </div>
 
@@ -187,7 +189,8 @@ function Booking() {
                 <button onClick={handleBooking }>Review Booking </button>
                 </div>
                 </div>
-                {showModal&&<ReiviewBooking setShowModal={setShowModal}/>}
+                {showModal&&<ReiviewBooking setShowModal={setShowModal} data={{name,number,email,idNo,address,state,country,selectedPaymentMethod,
+                city,zip,visaType,passportNO,issuedCountry,issuedCountry,date,isWindow,isMeals,isSpecial}}/>}
         </MDBContainer>
 
     )
