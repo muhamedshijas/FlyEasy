@@ -5,11 +5,15 @@ body{
     align-items: center;
 }
 .banner{
-    width:95vw;
+    width:80vw;
+    padding: 10px;
     display: flex;
-    background-color: #EADBC8;
+    background: url("https://i.pinimg.com/564x/8c/c1/0e/8cc10e4faf3c387605d21c8ae4a5dc84.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
     margin-top: 90px;
     border-radius: 9px;
+    height: 420px;
 }
 .banner .quotes{
     width: 50%;
@@ -17,22 +21,29 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
-.banner .quotes h3{
-    color: #102C57;
+.banner .quotes h2{
+    color: white ;
     text-align: left;
 }
 .banner .quotes p{
-    font-size: 20px;
-    font-weight: 500;
+    color:  #F8F0E5;;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.banner .quotes b{
+    color: white;
 }
 .banner .quotes button{
-    height: 40px;
-    width: 200px;
+    height: 45px;
+    width: 260px;
     font-weight: 500;
-    background-color: #102C57;
-    color: white;
+    background-color:#EADBC8;
+    outline: none;
+    border: none;
+    color: #102c57;
     border-radius: 5px;
 }
 .banner .images{
@@ -42,6 +53,7 @@ body{
     align-items: center;
 }
 .banner .images img{
-    height: 320px;
-    width: 540px;
+    margin-left: 50px;
+    height: 300px;
+    width: 300px;
 }
