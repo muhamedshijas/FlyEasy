@@ -4,6 +4,7 @@ import './App.css'
 import Home from './Components/Home/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Booking from './Components/Booking/Booking ';
+import BookingSuccesfull from './Components/BookingSuccessFull/BookingSuccesfull';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
     <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/booking' element ={<Booking/>}/>
+    <Route path='/bookingcompleted' element ={<BookingSuccesfull/>}/>
  
     </Routes>
     </MDBContainer>

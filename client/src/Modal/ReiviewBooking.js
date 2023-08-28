@@ -10,7 +10,7 @@ function ReiviewBooking({ setShowModal, data }) {
     setShowModal(false)
   }
   function handleSubmit(){  
-    navigate('/')
+    navigate('/bookingcompleted')
   }
   return (
     <div className='modal-main'>
@@ -22,10 +22,9 @@ function ReiviewBooking({ setShowModal, data }) {
         </div>
        <table>
       <tr><th colSpan={2} >Flight Detials </th></tr>
-      <tr><td><b>Flight Name</b></td><td>: Saudi Airlines</td></tr>
-      <tr><td><b>Route</b></td><td>: Abudhabi to Sharjah</td></tr>
-      <tr><td><b>Date</b></td><td>: 12/10/2022</td></tr>
-      <tr><td><b>Time</b></td><td>: 20:10</td></tr>
+      <tr><td><b>Flight Name</b></td><td>:{data?.flightDetials.name}</td></tr>
+      <tr><td><b>Route</b></td><td>: {data?.flightDetials.from} TO {data?.flightDetials.to}</td></tr>
+      <tr><td><b>Date</b></td><td>: {data.date}</td></tr>
       <tr><th colSpan={2} >Passenger  Detials </th></tr>
       <tr><td><b>Name</b></td><td>: {data.name}</td></tr>
       <tr><td><b>Phone No</b></td><td>: {data.number}</td></tr>
@@ -44,9 +43,10 @@ function ReiviewBooking({ setShowModal, data }) {
       <tr><td><b>City</b></td><td>:{data.city}</td></tr>
       <tr><td><b>State</b></td><td>: {data.state}</td></tr>
       <tr><td><b>Country</b></td><td>: {data.country}</td></tr>
-      <tr><td><b>ZipCode</b></td><td>: {data.zipCode}</td></tr>
+      <tr><td><b>ZipCode</b></td><td>: {data.zip}</td></tr>
       <tr><td><b>Phone No</b></td><td>: {data.number}</td></tr>
       <tr><td><b>Email</b></td><td>: {data.email}</td></tr>
+      <tr className='text-danger amount'><td><b>Amount Payable</b></td><td>: {data?.flightDetials.fare}</td></tr>
       </table>
       <div className="terms-and-condtions">
       <MDBCheckbox checked={isConfirm} onChange={(e)=>{setIsConfirm(e.target.checked)}}/>

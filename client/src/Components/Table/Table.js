@@ -4,7 +4,7 @@ import './Table.css'
 import { Select } from 'antd';
 
 import { SwapOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 function Table() {
@@ -16,57 +16,66 @@ function Table() {
   const data = [
     {
       image: "https://seeklogo.com/images/S/Saudi_Arabian_Airlines-logo-E05C118216-seeklogo.com.png",
-      name: 'John Doe',
+      name: 'Saudi Airlines',
       from: "Calicut",
+      fare: 22340,
       to: "Bengluru",
     },
     {
       image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Emirates_logo.svg/566px-Emirates_logo.svg.png",
-      name: 'Alex Ray',
+      name: 'Emirates',
       from: "Bengluru",
+      fare: 11340,
       to: "Abudhabi",
     },
     {
       image: "https://logowik.com/content/uploads/images/541_qatarairways.jpg",
-      name: 'Kate Hunington',
+      name: 'Qatar Airways',
       from: "Sharjah",
+      fare: 32340,
       to: "Jeddah",
     },
     {
       image: "https://w7.pngwing.com/pngs/544/56/png-transparent-gulf-air-office-airline-check-in-logo-umrah-miscellaneous-company-text-thumbnail.png",
-      name: 'John Doe',
+      name: 'Gulf Air',
       from: "Abudhabi",
+      fare: 18340,
       to: "Calicut",
 
     },
     {
-      image: "https://www.pngitem.com/pimgs/m/20-205338_saudia-airlines-logo-vector-logo-saudi-arabian-airlines.png",
-      name: 'Alex Ray',
+      image:"https://logos-world.net/wp-content/uploads/2023/01/Oman-Air-Logo.png",
+      name: 'Oman Air',
       from: "Kochi",
+      fare: 52310,
       to: "Jeddah",
     },
     {
-      image: "https://www.pngitem.com/pialicutmgs/m/20-205338_saudia-airlines-logo-vector-logo-saudi-arabian-airlines.png",
-      name: 'Kate Hunington',
+      image: "https://seeklogo.com/images/S/Saudi_Arabian_Airlines-logo-E05C118216-seeklogo.com.png",
+      name: 'Saudi Airlines',
       from: "Jeddah",
+      fare: 12340,
       to: "Calicut",
     },
     {
-      image: "https://www.pngitem.com/pimgs/m/20-205338_saudia-airlines-logo-vector-logo-saudi-arabian-airlines.png",
-      name: 'John Doe',
+      image: "https://i.pinimg.com/236x/23/31/9f/23319f3614c3fb3a2636bcc206b68446--ain-dubai.jpg",
+      name: 'Fly Dubai',
       from: "Abudhabi",
+      fare: 23450,
       to: "Sharjah",
     },
     {
-      image: "https://www.pngitem.com/pimgs/m/20-205338_saudia-airlines-logo-vector-logo-saudi-arabian-airlines.png",
-      name: 'Alex Ray',
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Emirates_logo.svg/566px-Emirates_logo.svg.png",
+      name: 'Emirates',
       from: "Sharjah",
-      to: "Kochi",// ... other properties
+      fare: 25640,
+      to: "Kochi",
     },
     {
-      image: "https://www.pngitem.com/pimgs/m/20-205338_saudia-airlines-logo-vector-logo-saudi-arabian-airlines.png",
-      name: 'Kate Hunington',
+      image: "https://w7.pngwing.com/pngs/544/56/png-transparent-gulf-air-office-airline-check-in-logo-umrah-miscellaneous-company-text-thumbnail.png",
+      name: 'Gulf Air',
       from: "Kochi",
+      fare: 17340,
       to: "Calicut",
     },
   ];
@@ -76,7 +85,7 @@ function Table() {
     (selectedTo === '' || item.to === selectedTo)
   );
 
-  return(
+  return (
     <>
       <MDBContainer>
         <div className="filter">
@@ -125,17 +134,17 @@ function Table() {
           </div>
 
           <div className="icon">
-          <SwapOutlined/>
+            <SwapOutlined />
           </div>
           <div className="to">
             TO
             <Select
-            
+
               showSearch
               style={{
                 width: 400,
-              
-                fontSize:20
+
+                fontSize: 20
               }}
               className="to-selection"
               placeholder="Choose Designation point"
@@ -179,13 +188,13 @@ function Table() {
         </div>
 
         {
-          filteredData.length === 0?(
-            <p  className='no-data'>No Airlines Available</p>
+          filteredData.length === 0 ? (
+            <p className='no-data'>No Airlines Available</p>
           ) : (<MDBTable align='middle' className='data-table'>
             <MDBTableHead>
               <tr>
                 <th scope='col'>Airline Name</th>
-                <th scope='col'>Date</th>
+                <th scope='col'>Fare</th>
                 <th scope='col'>From </th>
                 <th scope='col'>To</th>
                 <th scope='col'>Actions</th>
@@ -208,14 +217,14 @@ function Table() {
                   </td>
 
                   <td>
-                    12/10/2022
+                    {item.fare}
                   </td>
                   <td>{item.from}</td>
                   <td>{item.to}</td>
                   <td>
-                  <Link to='/booking'>
-                  <button>Book Now</button>
-                  </Link>
+                    <Link to= '/booking' state={{ flightDetials: item }}>
+                      <button>Book Now</button>
+                    </Link>
                   </td>
                 </tr>
               ))}

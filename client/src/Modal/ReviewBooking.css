@@ -71,3 +71,6 @@ h2 {
     gap: 10px;
     padding-left: 10px ;
 }
+.booking-review table .amount{
+  font-size: 19px;
+}

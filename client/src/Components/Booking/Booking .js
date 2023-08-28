@@ -24,6 +24,7 @@ import {
 
 import { SwapOutlined } from '@ant-design/icons';
 import ReiviewBooking from '../../Modal/ReiviewBooking';
+import { useLocation } from 'react-router-dom';
 
 function Booking() {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Select Payment Method');
@@ -51,8 +52,10 @@ function Booking() {
     const [state,setState]=useState("")
     const [country,setCountry]=useState("")
     const [zip,setZip]=useState()
+    const location = useLocation();
+    console.log(location)
+    const flightDetials = location.state ? location.state.flightDetials : null;
    
-
     const handlePaymentMethodSelect = (method) => {
         setSelectedPaymentMethod(method);
         setShowCardFields(method === 'Card');
@@ -72,10 +75,11 @@ function Booking() {
             <div className="bookin-page">
                 <div className="travel-detials">
                     <div className="choosed-airline">
-                        <p>Saudi Airlines</p>
+                        <p>{flightDetials.name}</p>
                     </div>
                     <div className="destination text-primary">
-                        Sharjah <SwapOutlined /> Caliciut
+                        {flightDetials.from} <SwapOutlined /> {flightDetials.to}
+
                     </div>
                 </div>
                 <div className="preferences">
@@ -178,11 +182,12 @@ function Booking() {
                 </div>
                 <div className="passenger">
                 <MDBInput label="Phone No" value={number} disabled/>
-                <MDBInput label="Email" />
+                <MDBInput label="Email" onChange={(e)=>setEmail(e.target.value)} />
                 </div>
 
                 <div className="passenger">
                 <MDBInput label="Payment Method" value={selectedPaymentMethod}  disabled/>
+                <MDBInput label="Amount Payable " value={flightDetials.fare}  disabled/>
                 </div>
                 </div>
                 <div className="submit-button">
@@ -190,7 +195,7 @@ function Booking() {
                 </div>
                 </div>
                 {showModal&&<ReiviewBooking setShowModal={setShowModal} data={{name,number,email,idNo,address,state,country,selectedPaymentMethod,
-                city,zip,visaType,passportNO,issuedCountry,issuedCountry,date,isWindow,isMeals,isSpecial}}/>}
+                city,zip,visaType,passportNO,issuedDate,issuedCountry,date,isWindow,isMeals,isSpecial,flightDetials}}/>}
         </MDBContainer>
 
     )
