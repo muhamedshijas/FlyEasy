@@ -10,7 +10,7 @@ import Table from './Components/Table/Table';
 
 function App() {
   return (
-    <MDBContainer fluid>
+    <div className="app">
     <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/chooseflight' element={<Table/>}/>
@@ -18,7 +18,7 @@ function App() {
     <Route path='/bookingcompleted' element ={<BookingSuccesfull/>}/>
     <Route path='/stepper' element ={<Stepper/>}/>
     </Routes>
-    </MDBContainer>
+    </div>
   );
 }
 
