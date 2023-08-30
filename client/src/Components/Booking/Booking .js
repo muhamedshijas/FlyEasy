@@ -23,7 +23,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 import { SwapOutlined } from '@ant-design/icons';
-import ReiviewBooking from '../../Modal/ReiviewBooking';
+import ReiviewBooking from '../Modal/ReiviewBooking';
 import { useLocation } from 'react-router-dom';
 
 function Booking() {
