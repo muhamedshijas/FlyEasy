@@ -1,6 +1,7 @@
 import React from 'react'
 import './Banner.css'
 import images from '../../assets/images/image.png'
+import { Link } from 'react-router-dom'
 function Banner() {
   return (
     <div>
@@ -12,7 +13,9 @@ function Banner() {
     Trust us to make your travel dreams come true."
     </p>
     <b>Book your next getaway and create lasting memories today</b>
+    <Link to='/chooseflight'>
     <button>Try It Out</button>
+    </Link>
     </div>
 
     <div className="images">

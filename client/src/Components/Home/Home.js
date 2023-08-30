@@ -8,7 +8,7 @@ function Home() {
     <div>
     <Navbar/>
     <Banner/>
-    <Table/>
+
     </div>
   )
 }
