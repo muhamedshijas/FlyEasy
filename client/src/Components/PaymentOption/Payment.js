@@ -20,9 +20,10 @@ import {
     MDBDropdownItem,
 } from 'mdb-react-ui-kit';
 
-function Payment() {
+function Payment({setBookingData,bookingData,fare}) {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Select Payment Method');
     const handlePaymentMethodSelect = (method) => {
+        setBookingData({...bookingData,paymentMethod:method})
         setSelectedPaymentMethod(method);
         setShowCardFields(method === 'Card');
         setShowUpiField(method === 'UPI Method');
@@ -54,15 +55,15 @@ function Payment() {
 
                 {showCardFields && (
                     <div className="card-detials">
-                        <MDBInput label="Card No" onChange={(e) => setCardNo(e.target.value)} />
-                        <MDBInput label="Expiry Date" onChange={(e) => setCardDate(e.target.value)} />
-                        <MDBInput label="CVV" onChange={(e) => setCvv(e.target.value)} />
+                        <MDBInput label="Card No" onChange={(e)=>{setBookingData({...bookingData,cardNo:e.target.value})}} />
+                        <MDBInput label="Expiry Date" type="date" onChange={(e)=>{setBookingData({...bookingData,cardExpiry:e.target.value})}}/>
+                        <MDBInput label="CVV" onChange={(e)=>{setBookingData({...bookingData,cvv:e.target.value})}} />
                     </div>
                 )}
 
                 {showUpiField && (
                     <div className='upi-id'>
-                        <MDBInput label="UPI Id" />
+                        <MDBInput label="UPI Id" onChange={(e)=>{setBookingData({...bookingData,upi:e.target.value})}}/>
                     </div>
                 )}
             </div>
@@ -70,25 +71,25 @@ function Payment() {
             <div className="billing-address">
             
             <div className="passenger">
-                <MDBInput label="Name" value= "hsadfhfdjsd"disabled />
-                <MDBInput label="Address" onChange={(e)=>setAddress(e.target.value)} />
+                <MDBInput label="Name" value= {bookingData.name}disabled />
+                <MDBInput label="Address" onChange={(e)=>{setBookingData({...bookingData,address:e.target.value})}} />
                 </div>
                 <div className="passenger">
-                <MDBInput label="City" onChange={(e)=>setCity(e.target.value)}/>
-                <MDBInput label="State" onChange={(e)=>setState(e.target.value)}/>
+                <MDBInput label="City" onChange={(e)=>{setBookingData({...bookingData,city:e.target.value})}}/>
+                <MDBInput label="State" onChange={(e)=>{setBookingData({...bookingData,state:e.target.value})}}/>
                 </div>
                 <div className="passenger">
-                <MDBInput label="Country" onChange={(e)=>setCountry(e.target.value)} />
-                <MDBInput label="Zip" onChange={(e)=>setZip(e.target.value)}/>
+                <MDBInput label="Country" onChange={(e)=>{setBookingData({...bookingData,country:e.target.value})}} />
+                <MDBInput label="Zip" onChange={(e)=>{setBookingData({...bookingData,zip:e.target.value})}}/>
                 </div>
                 <div className="passenger">
-                <MDBInput label="Phone No" value="hsadfhfdjsd" disabled/>
-                <MDBInput label="Email" onChange={(e)=>setEmail(e.target.value)} />
+                <MDBInput label="Phone No" value={bookingData.phoneNo} disabled/>
+                <MDBInput label="Email" onChange={(e)=>{setBookingData({...bookingData,email:e.target.value})}} />
                 </div>
 
                 <div className="passenger">
-                <MDBInput label="Payment Method" value="gggfgfgfg"  disabled/>
-                <MDBInput label="Amount Payable " value="hsadfhfdjsd"  disabled/>
+                <MDBInput label="Payment Method" value={bookingData.paymentMethod}  disabled/>
+                <MDBInput label="Amount Payable " value={fare}  disabled/>
                 </div>
                 
             </div>

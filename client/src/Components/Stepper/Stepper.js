@@ -17,29 +17,46 @@ function Stepper() {
   const [currentStep, setCurrentStep] = useState(0);
   const [showModal,setShowModal]=useState(false)
   const [bookingData,setBookingData]=useState({
-    name:'Enter Your Name',
+    name:'',
     email:'',
     phoneNo:0,
+    passportNo:0,
+    issuedDate:'',
+    nationality:'',
+    visaType:'Choose  type of visa',
     isWindow:false,
     isSpecial:false,
-    isMeals:false
-
+    isMeals:false,
+    NoOfAdults:0,
+    NoOfChildrens:0,
+    TypeOfTravel:'',
+    age:0,
+    paymentMethod:'',
+    address:'',
+    city:'',
+    state:'',
+    country:'',
+    zip:0,
+    upi:'',
+    cardN0:0,
+    cardExpiry:'',
+    cvv:0
   })
 
   const handleModal=()=>{
     setShowModal(true)
   }
-
+const [valid ,setValid]=useState(flase)
   const steps = [
     {
       title: 'Flight Detials',
-      content: <FlightDetials flightDetials={flightDetials} bookingData={bookingData} setBookingData={setBookingData}/>,
+      content: <FlightDetials flightDetials={flightDetials} bookingData={bookingData} setBookingData={setBookingData} valid={setValid}/>,
     }, {
       title: 'Passenger Detials',
-      content: <PersonalDetials date={flightDetials.date} />,
+      content: <PersonalDetials date={flightDetials.date} bookingData={bookingData}  setBookingData={setBookingData} />,
     }, {
       title: 'Payment and Billing',
-      content: <Payment />
+      content: <Payment fare={flightDetials.fare} bookingData={bookingData} setBookingData={setBookingData}/>
     }
 
   ];

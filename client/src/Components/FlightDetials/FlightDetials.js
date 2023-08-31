@@ -58,18 +58,18 @@ function FlightDetials({ flightDetials,setBookingData,bookingData}) {
                 </div>
                 <div className="class-selection">
 
-                    <Radio.Group defaultValue="economy" size="default">
-                        <Radio value="first">Premium First Class</Radio>
-                        <Radio value="first">First Class</Radio>
-                        <Radio value="business">Business Class</Radio>
-                        <Radio value="premium-economy">Premium Economy</Radio>
-                        <Radio value="economy">Economy</Radio>
+                    <Radio.Group defaultValue="economy" size="default" onChange={(e)=>{setBookingData({...bookingData,TypeOfTravel:e.target.value})}}>
+                        <Radio value="Premium First Class">Premium First Class</Radio>
+                        <Radio value="First Class">First Class</Radio>
+                        <Radio value="Business Class">Business Class</Radio>
+                        <Radio value="Premium Economy ">Premium Economy</Radio>
+                        <Radio value="Economy ">Economy</Radio>
                     </Radio.Group>
                 </div>
                 <div className="seats">
                 
-                <MDBInput label="Adults" type="number" max={10}/>
-                <MDBInput label="Childrens" type="number" max={10}/>
+                <MDBInput label="Adults" type="number" max={10} onChange={(e)=>{setBookingData({...bookingData,NoOfAdults:e.target.value})}} />
+                <MDBInput label="Childrens" type="number" max={10} onChange={(e)=>{setBookingData({...bookingData,NoOfChildrens:e.target.value})}}/>
                 </div>
 
             </div>
