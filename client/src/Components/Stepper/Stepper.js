@@ -6,42 +6,53 @@ import Preferences from '../Preferences/Preferences';
 import TravelDocuments from '../TravelDocuments/TravelDocuments';
 import Payment from '../PaymentOption/Payment';
 import BillingAddress from '../BillingAddress/BillingAddress';
+import { useLocation } from 'react-router-dom';
+import './Stepper.css'
+import ReiviewBooking from '../Modal/ReiviewBooking';
 const Step = Steps
 
 function Stepper() {
-    const [currentStep, setCurrentStep] = useState(0);
+  const location = useLocation();
+  const flightDetials = location.state ? location.state.flightDetials : null;
+  const [currentStep, setCurrentStep] = useState(0);
+  const [showModal,setShowModal]=useState(false)
+  const [bookingData,setBookingData]=useState({
+    name:'Enter Your Name',
+    email:'',
+    phoneNo:0,
+    isWindow:false,
+    isSpecial:false,
+    isMeals:false
 
-    const steps = [
-        {
-            title: 'Step 1',
-            content: <PersonalDetials />,
-        },{
-            title: 'Step 2',
-            content: <FlightDetials />,
-        },{
-            title:'Step 3',
-            content:<Preferences/>
-        },{
-            title:'Step 4',
-            content:<TravelDocuments/>
-        },{
-            title:'step 5',
-            content:<Payment/>
-        },{
-            title:'step 6',
-            content:<BillingAddress/>
-        }
+  })
 
-    ];
+  const handleModal=()=>{
+    setShowModal(true)
+  }
 
-    const nextStep = () => {
-        setCurrentStep(currentStep + 1);
-    };
+  const steps = [
+    {
+      title: 'Flight Detials',
+      content: <FlightDetials flightDetials={flightDetials} bookingData={bookingData} setBookingData={setBookingData}/>,
+    }, {
+      title: 'Passenger Detials',
+      content: <PersonalDetials date={flightDetials.date} />,
+    }, {
+      title: 'Payment and Billing',
+      content: <Payment />
+    }
 
-    const prevStep = () => {
-        setCurrentStep(currentStep - 1);
-    };
-    return  (<div>
+  ];
+
+  const nextStep = () => {
+    setCurrentStep(currentStep + 1);
+  };
+
+  const prevStep = () => {
+    setCurrentStep(currentStep - 1);
+  };
+  return (
+    <div>
       <Steps current={currentStep}>
         {steps.map((item) => (
           <Step key={item.title} title={item.title} />
@@ -59,7 +70,13 @@ function Stepper() {
             Next
           </button>
         )}
+        {currentStep === steps.length - 1 && (
+          <button className="btn" onClick={handleModal}>
+            Review
+          </button>
+        )}
       </div>
+      {showModal&&<ReiviewBooking setShowModal={setShowModal} bookingData={bookingData} flightDetials={flightDetials} />}
     </div>
   );
 }

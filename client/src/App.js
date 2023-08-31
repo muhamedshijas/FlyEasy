@@ -16,7 +16,6 @@ function App() {
     <Route path='/chooseflight' element={<Table/>}/>
     <Route path='/booking' element ={<Stepper/>}/>
     <Route path='/bookingcompleted' element ={<BookingSuccesfull/>}/>
-    <Route path='/stepper' element ={<Stepper/>}/>
     </Routes>
     </div>
   );

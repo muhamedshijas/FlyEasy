@@ -1,0 +1,115 @@
+.payment-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.payment-body .payment {
+  background-color: #d0f1ff93;
+  color: #333333;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+.payment .payment-detials {
+  margin-top: 15px;
+  border: 2px solid #102c5729;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px;
+  gap: 20px;
+  position: relative;
+}
+.payment .payment-detials::after {
+  content: "Payment";
+  background-color: #d0f1ffd0;
+  padding: 0 10px;
+  position: absolute;
+  top: -16px;
+  font-size: 19px;
+  font-weight: 600;
+  left: 10%;
+  transform: translateX(-50%);
+}
+.payment .payment-method {
+  width: 40%;
+}
+.payment .payment-method .btn {
+  background-color: #d0f1ff93;
+  width: 396px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: left;
+  height: 50px;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.122);
+  box-shadow: none !important;
+}
+.payment .payment-detials .card-detials {
+  display: flex;
+  gap: 20px;
+}
+.payment .payment-detials input {
+  height: 50px;
+}
+
+.payment .payment-detials .upi-id {
+  width: 50%;
+}
+
+.payment-detials .payment-method ul {
+  width: 396px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.payment .billing-address{
+    margin-top: 15px;
+    border: 2px solid #102c5729;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px;
+    gap: 20px;
+    position: relative;
+}
+.payment .billing-address::after {
+    content: "Billing Address";
+    background-color: #d0f1ffd0;
+    padding: 0 10px;
+    position: absolute;
+    top: -16px;
+    font-size: 19px;
+    font-weight: 600;
+    left: 10%;
+    transform: translateX(-50%);
+  }
+
+  .payment .billing-address .passenger{
+    display: flex;
+    gap: 20px;
+}
+.payment .billing-address input{
+    height: 50px;
+    
+}
+.payment-body .submit-btn button{
+    margin-top: 20px;
+    height: 40px;
+    width: 200px;
+    border-radius: 6px;
+    background-color:#003366;
+    color: white;
+    font-size: 16px;
+}

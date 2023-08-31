@@ -1,0 +1,116 @@
+.travel-detials{
+    background-color:  #d0f1ff93;
+    color: #333333;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+.travel-detials-body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.travel-detials p{
+    font-weight: 700;
+    font-size: 29px;
+    margin-bottom: 2px !important;
+}
+.travel-detials .preferences{
+    margin-top: 15px;
+    border: 2px solid #102c5729;
+    border-radius: 9px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    position: relative;
+}
+.travel-detials .preferences::after {
+    content: "Preference"; 
+    background-color:#d0f1ffd0; 
+    padding: 0 10px; 
+    position: absolute;
+    top: -16px;
+    font-size: 19px;
+    font-weight: 600;
+    left: 10%; 
+    transform: translateX(-50%);
+}
+.travel-detials .preferences .item-one label{
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    gap: 10px;
+}
+.travel-detials .class-selection{
+    margin-top: 25px;
+    border: 2px solid #102c5729;
+    border-radius: 9px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    
+    position: relative;
+}
+.travel-detials .class-selection::after {
+    content: "Travel Class"; 
+    background-color:#d0f1ffd0; 
+    padding: 0 10px; 
+    position: absolute;
+    top: -16px;
+    font-size: 19px;
+    font-weight: 600;
+    left: 10%; 
+    transform: translateX(-50%);
+}
+.travel-detials .class-selection .ant-radio-group{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+}
+.travel-detials .class-selection span{
+    font-size: 17px !important;
+    font-weight: 500;
+}
+.travel-detials .seats{
+    margin-top: 25px;
+    border: 2px solid #102c5729;
+    border-radius: 9px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;   
+}
+.travel-detials .seats::after {
+    content: "No of passengers"; 
+    background-color:#d0f1ffd0; 
+    padding: 0 10px; 
+    position: absolute;
+    top: -16px;
+    font-size: 19px;
+    font-weight: 600;
+    left: 10%; 
+    transform: translateX(-50%);
+}
+.travel-detials .seats .form-outline{
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
